@@ -268,7 +268,7 @@ class Folder extends Ansible {
         $currentTmp = sprintf('%s/%s/current-%s.tmp', rtrim($this->getConfig()->release_library, '/'), $this->getConfig()->id, $project);
         // 遇到回滚，则使用回滚的版本version
         $linkFrom = Project::getReleaseVersionDir($version);
-        $cmd[] = sprintf('ln -sfn %s %s', $linkFrom, $currentTmp);
+        $cmd[] = sprintf('ln -sfTn %s %s', $linkFrom, $currentTmp);
         $cmd[] = sprintf('chown -h %s %s', $user, $currentTmp);
         $cmd[] = sprintf('mv -fT %s %s', $currentTmp, $this->getConfig()->release_to);
 
