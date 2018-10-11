@@ -54,6 +54,9 @@ class Project extends \yii\db\ActiveRecord
     // 线上环境
     const LEVEL_PROD  = 3;
 
+    // 开发环境
+    const LEVEL_DEV  = 4;
+
     const AUDIT_YES = 1;
 
     const AUDIT_NO = 2;

@@ -21,6 +21,7 @@ use yii\widgets\ActiveForm;
             Project::LEVEL_TEST => \Yii::t('w', 'conf_level_' . Project::LEVEL_TEST),
             Project::LEVEL_SIMU => \Yii::t('w', 'conf_level_' . Project::LEVEL_SIMU),
             Project::LEVEL_PROD => \Yii::t('w', 'conf_level_' . Project::LEVEL_PROD),
+            Project::LEVEL_DEV => \Yii::t('w', 'conf_level_' . Project::LEVEL_DEV),
         ],[
             'class'          => 'col-sm-11',])
             ->label(yii::t('conf', 'env'), ['class' => 'text-right bolder blue col-sm-1']) ?>
