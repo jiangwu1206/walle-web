@@ -27,6 +27,7 @@ use yii\helpers\Url;
                     <?php if ($project['level'] == Project::LEVEL_TEST) {
         ?>
                     <a class="btn btn-inline btn-info" style="min-width:120px;margin:auto auto 20px 40px;" href="<?= Url::to("@web/task/submit?projectId={$project['id']}"); ?>"><?= $project['name']; ?></a>
+                    <input name="test" type="checkbox" value=<?=$project['id'];?>></input>
                     <?php
     } ?>
                 <?php
@@ -55,6 +56,7 @@ use yii\helpers\Url;
                     <?php if ($project['level'] == Project::LEVEL_SIMU) {
             ?>
                         <a class="btn btn-inline btn-warning" style="min-width:120px;margin: auto auto 20px 40px;" href="<?= Url::to("@web/task/submit?projectId={$project['id']}"); ?>"><?= $project['name']; ?></a>
+                        <input name="pre" type="checkbox" value=<?=$project['id'];?>></input>
                     <?php
         } ?>
                 <?php
@@ -83,6 +85,7 @@ use yii\helpers\Url;
                     <?php if ($project['level'] == Project::LEVEL_PROD) {
             ?>
                         <a class="btn btn-inline btn-success" style="min-width:120px;margin: auto auto 20px 40px;" href="<?= Url::to("@web/task/submit?projectId={$project['id']}"); ?>"><?= $project['name']; ?></a>
+                        <input name="pro" type="checkbox" value=<?=$project['id'];?>></input>
                     <?php
         } ?>
                 <?php
@@ -90,7 +93,7 @@ use yii\helpers\Url;
             </div>
         </div>
     </div>
-    <!-- 模拟线上环境 -->
+    <!-- 线上环境 -->
     <br>
         <!-- 开发环境 -->
     <div class="widget-box transparent">
@@ -111,6 +114,7 @@ use yii\helpers\Url;
                     <?php if ($project['level'] == Project::LEVEL_DEV) {
             ?>
                     <a class="btn btn-inline btn-info" style="min-width:120px;margin:auto auto 20px 40px;" href="<?= Url::to("@web/task/submit?projectId={$project['id']}"); ?>"><?= $project['name']; ?></a>
+                    <input name="dev" type="checkbox" value=<?=$project['id'];?>></input>
                     <?php
         } ?>
                 <?php
@@ -240,7 +244,7 @@ use yii\helpers\Url;
             Promise.all(promiseArr)
             .then((...arg) => {
                 var success = 0,fail = 0,failArr = [];
-                [...arg].map(item => {
+                arg[0].map(item => {
                     if(item.status === 'success'){
                         success++
                     } else {
@@ -269,7 +273,7 @@ use yii\helpers\Url;
                     success: function (data) {
                         // 获取commit log失败
                         data.code && reject(new Error('获取提交记录失败'))
-                        resolve(data.data[0].message)
+                        resolve(data.data[0].id)
                     },
                     error: function(e){
                         console.log(e)
