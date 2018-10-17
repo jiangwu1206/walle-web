@@ -154,18 +154,32 @@ async function DallPush(env,project_id){
        $("#loadingModal").modal('show');
        //if(loading) return;
        //loading = true
+        switch(env){
+            case 'test':
+                d_branch = 'dev'
+                break;
+            case 'pre':
+                d_branch = 'master'
+                break;
+            case 'pro':
+                d_branch = 'master'
+                break;
+            case 'dev':
+                d_branch = 'dev'
+                break;
+        }
        var promiseArr = [];
        for(var i = 0,item;i<project_id.length;i++){
            if(! project_id[i].checked){continue;};
            try {
                item=project_id[i].value
-               var commitLastLog = await dgetCommitList(item,env)
+               var commitLastLog = await dgetCommitList(item,d_branch)
            } catch(e){
               alert('发布失败,获取提交记录失败')
               break
            }
            var formData = new FormData();
-           formData.append('Task[branch]', env);
+           formData.append('Task[branch]', d_branch);
            formData.append('Task[title]', '多选发布TEST');
            formData.append('Task[commit_id]', commitLastLog);
            formData.append('Task[file_transmission_mode]', 1);

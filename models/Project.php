@@ -77,6 +77,7 @@ class Project extends \yii\db\ActiveRecord
         self::LEVEL_TEST => 'test',
         self::LEVEL_SIMU => 'simu',
         self::LEVEL_PROD => 'prod',
+        self::LEVEL_DEV => 'dev',
     ];
 
     /**
