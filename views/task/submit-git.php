@@ -39,14 +39,14 @@ use app\models\Task;
               </label>
 			  
 			  <!--管理员、测试、预发布、线上环境、开发环境可全量-->
-			  <?php if ($conf['user_id'] == 1 or $conf['level'] == 1 or $conf['level'] == 2 or $conf['level'] == 3 or $conf['level'] == 4) { ?>
+			  <!-- #<?php if ($conf['user_id'] == 1 or $conf['level'] == 1 or $conf['level'] == 2 or $conf['level'] == 3 or $conf['level'] == 4) { ?> -->
               <div id="transmission-full-ctl" class="radio" style="display: inline;" data-rel="tooltip" data-title="<?= yii::t('task', 'file transmission mode full tip') ?>" data-placement="right">
                   <label>
                       <input name="Task[file_transmission_mode]" value="<?= Task::FILE_TRANSMISSION_MODE_FULL ?>" type="radio" class="ace">
                       <span class="lbl"><?= yii::t('task', 'file transmission mode full') ?></span>
                   </label>
               </div>
-			  <?php } ?>
+			  <!-- #<?php } ?> -->
 
               <div id="transmission-part-ctl" class="radio" style="display: inline;" data-rel="tooltip" data-title="<?= yii::t('task', 'file transmission mode part tip') ?>" data-placement="right">
                   <label>
